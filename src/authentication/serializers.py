@@ -5,7 +5,7 @@ UserModel = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
-
+    """ Сериалайзер для регистрации нового пользователя """
     password = serializers.CharField(write_only=True)
 
     def create(self, validated_data):
@@ -19,5 +19,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserModel
-        # Tuple of serialized model fields (see link [2])
         fields = ( "id", "username", "password", )
