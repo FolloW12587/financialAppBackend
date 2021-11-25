@@ -11,7 +11,7 @@ class FinancialUnitTypeSerializer(serializers.ModelSerializer):
 
 
 class FinancialUnitSerializer(serializers.ModelSerializer):
-    # fin_type = FinancialUnitTypeSerializer()
+    fin_type = FinancialUnitTypeSerializer()
 
     class Meta:
         model = models.FinancialUnit

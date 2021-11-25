@@ -27,6 +27,7 @@ class FinancialUnit(models.Model):
     range_str = models.CharField("Диапазон", max_length=255, blank=True, null=True)
     active = models.BooleanField("Активно", default=True)
     link = models.TextField("Ссылка")
+    image = models.ImageField(upload_to='uploads/%Y/%m/%d/', blank=True, null=True)
 
     class Meta:
         verbose_name = "Финансовая единица"
