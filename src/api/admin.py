@@ -11,5 +11,5 @@ class FinancailUnitsTypeAdmin(admin.ModelAdmin):
 
 @admin.register(models.FinancialUnit)
 class FinancailUnitsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'fin_type', 'active', 'short_description', 'range_str', )
+    list_display = ('id', 'name', 'fin_type', 'active')
     search_fields = ('name',)

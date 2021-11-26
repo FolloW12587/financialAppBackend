@@ -1,5 +1,5 @@
 from rest_framework.viewsets import ReadOnlyModelViewSet
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from . import serializers, models
 
@@ -7,6 +7,6 @@ from . import serializers, models
 class FinancialUnitsView(ReadOnlyModelViewSet):
     queryset = models.FinancialUnit.objects.filter(active=True).all()
     serializer_class = serializers.FinancialUnitSerializer
-    permission_classes = [IsAuthenticated,]
+    permission_classes = [AllowAny,]
 
     
