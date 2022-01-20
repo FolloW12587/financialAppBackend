@@ -13,3 +13,8 @@ class FinancailUnitsTypeAdmin(admin.ModelAdmin):
 class FinancailUnitsAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'fin_type', 'active')
     search_fields = ('name',)
+
+@admin.register(models.Settings)
+class SettingsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'value')
+    search_fields = ('name',)
