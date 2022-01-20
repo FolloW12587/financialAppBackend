@@ -9,4 +9,7 @@ class FinancialUnitsView(ReadOnlyModelViewSet):
     serializer_class = serializers.FinancialUnitSerializer
     permission_classes = [AllowAny,]
 
-    
+class SettingsView(ReadOnlyModelViewSet):
+    queryset = models.Settings.objects.all()
+    serializer_class = serializers.SettingsSerializer
+    permission_classes = [AllowAny,]

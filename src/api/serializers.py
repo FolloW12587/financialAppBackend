@@ -16,3 +16,30 @@ class FinancialUnitSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.FinancialUnit
         fields = '__all__'
+
+
+class SettingsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Settings
+        exclude = ['desc']
+
+# class SettingsSerializer(serializers.BaseSerializer):
+#     def to_representation(self, instance):
+#         if instance.settings_type == models.Settings.INT:
+#             value = int(instance.value)
+
+#         elif instance.settings_type == models.Settings.DOUBLE:
+#             value = float(instance.value)
+
+#         elif instance.settings_type == models.Settings.LIST:
+#             value = instance.value.split(',')
+
+#         else: 
+#             value = instance.value
+
+#         return {
+#             'id': instance.id,
+#             'name': instance.name,
+#             'settings_type': instance.settings_type,
+#             'value': value
+#         }

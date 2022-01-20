@@ -64,7 +64,7 @@ class Settings(models.Model):
         (INT, 'integer'),
         (DOUBLE, 'double'),
         (STRING, 'string'),
-        (LIST, 'array (list)')
+        (LIST, 'array')
     )
     id = models.AutoField("id", primary_key=True)
     name = models.CharField("Наименование", max_length=31,
