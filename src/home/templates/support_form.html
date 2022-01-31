@@ -1,0 +1,10 @@
+{% extends 'support_base.html' %}
+
+{% block content %}
+    <div class="subtitle"> Форма обращения: </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Отправить">
+    </form>
+{% endblock %}
