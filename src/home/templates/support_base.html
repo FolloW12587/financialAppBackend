@@ -9,18 +9,13 @@
     <link rel="stylesheet" type="text/css" href="{% static 'home/css/style.css' %}">
 </head>
 <body>
-    
-
-    <body>
-        <div class="container">
-            <h1 class="header">Добро пожаловать в службу поддержки приложения "Займы на карту"</h1>
-            <div class="block">
-                <div class="text">Если в процессе работы с <a href="">нашим приложением</a> вы столкнулись с трудностями или у вас возник вопрос или предложение, сообщите нам через форму ниже.</div>
-                <img class="logo" src="{% static 'home/img/logo.png' %}" alt="logo">
-            </div>
-            {% block content %} Ваше обращение зарегистрировано! Скоро с вами свяжутся наши специалисты. {% endblock %}
+    <div class="container">
+        <h1 class="header">Добро пожаловать в службу поддержки приложения "Займы на карту"</h1>
+        <div class="block">
+            <div class="text">Если в процессе работы с <a href="">нашим приложением</a> вы столкнулись с трудностями или у вас возник вопрос или предложение, сообщите нам через форму ниже.</div>
+            <img class="logo" src="{% static 'home/img/logo.png' %}" alt="logo">
         </div>
-    
-    </body>
+        {% block content %} Ваше обращение зарегистрировано! Скоро с вами свяжутся наши специалисты. {% endblock %}
+    </div>
 </body>
 </html>
