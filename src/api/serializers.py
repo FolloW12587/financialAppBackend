@@ -23,6 +23,12 @@ class SettingsSerializer(serializers.ModelSerializer):
         model = models.Settings
         exclude = ['desc']
 
+
+class LeadFormDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.LeadFormData
+        fields = '__all__'
+
 # class SettingsSerializer(serializers.BaseSerializer):
 #     def to_representation(self, instance):
 #         if instance.settings_type == models.Settings.INT:

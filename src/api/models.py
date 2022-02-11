@@ -1,4 +1,5 @@
 import re
+from tabnanny import verbose
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -92,6 +93,22 @@ class Settings(models.Model):
     class Meta:
         verbose_name = "Настройка"
         verbose_name_plural = "Настройки"
+
+    def __str__(self):
+        return self.name
+
+
+class LeadFormData(models.Model):
+    """ Данные с лидформы """
+    id = models.AutoField("id", primary_key=True)
+    name = models.CharField("Название", max_length=255)
+    email = models.CharField("Почта", max_length=255)
+    phone = models.CharField("Телефон", max_length=31)
+    sum = models.DecimalField("Сумма", max_digits=6, decimal_places=2, default=0.0)
+
+    class Meta:
+        verbose_name = "Данные с лид формы"
+        verbose_name_plural = "Данные с лид формы"
 
     def __str__(self):
         return self.name

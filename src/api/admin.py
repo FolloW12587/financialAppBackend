@@ -1,3 +1,4 @@
+from re import search
 from django.contrib import admin
 
 from . import models
@@ -17,4 +18,9 @@ class FinancailUnitsAdmin(admin.ModelAdmin):
 @admin.register(models.Settings)
 class SettingsAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'value')
+    search_fields = ('name',)
+
+@admin.register(models.LeadFormData)
+class LeadFormAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'email', 'phone', 'sum')
     search_fields = ('name',)
