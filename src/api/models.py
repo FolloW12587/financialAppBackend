@@ -104,7 +104,7 @@ class LeadFormData(models.Model):
     name = models.CharField("Название", max_length=255)
     email = models.CharField("Почта", max_length=255)
     phone = models.CharField("Телефон", max_length=31)
-    sum = models.DecimalField("Сумма", max_digits=6, decimal_places=2, default=0.0)
+    sum = models.DecimalField("Сумма", max_digits=10, decimal_places=2, default=0.0)
 
     class Meta:
         verbose_name = "Данные с лид формы"
