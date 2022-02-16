@@ -101,9 +101,9 @@ class Settings(models.Model):
 class LeadFormData(models.Model):
     """ Данные с лидформы """
     id = models.AutoField("id", primary_key=True)
-    name = models.CharField("Название", max_length=255)
-    email = models.CharField("Почта", max_length=255)
-    phone = models.CharField("Телефон", max_length=31)
+    name = models.CharField("Название", max_length=255, blank=True)
+    email = models.CharField("Почта", max_length=255, blank=True)
+    phone = models.CharField("Телефон", max_length=31, blank=True)
     sum = models.DecimalField("Сумма", max_digits=10, decimal_places=2, default=0.0)
 
     class Meta:
