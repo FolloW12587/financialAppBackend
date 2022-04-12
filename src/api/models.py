@@ -6,6 +6,19 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models import CheckConstraint, Q
 
 
+class App(models.Model):
+    """ Приложение """
+    id = models.AutoField("id", primary_key=True)
+    name = models.CharField("Название", max_length=255)
+
+    class Meta:
+        verbose_name = "Приложение"
+        verbose_name_plural = "Приложения"
+
+    def __str__(self):
+        return self.name
+
+
 class FinancailUnitsType(models.Model):
     """ Типы финансовых единиц """
     id = models.AutoField("id", primary_key=True)
@@ -39,6 +52,8 @@ class FinancialUnit(models.Model):
     link = models.TextField("Ссылка")
     image = models.ImageField(
         upload_to='uploads/%Y/%m/%d/', blank=True, null=True)
+    app = models.ForeignKey(App, verbose_name="Приложение",
+                            on_delete=models.CASCADE, null=True)
 
     class Meta:
         verbose_name = "Финансовая единица"
@@ -74,21 +89,26 @@ class Settings(models.Model):
     settings_type = models.CharField("Тип", max_length=3, choices=SETTINGS_TYPE_CHOICES,
                                      help_text="Десятичная часть в типе Double разделяется точкой (.) . Массив Array интерпретируется как список строк, каждый элемент которого разделен запятой.")
     value = models.CharField("Значение", max_length=255)
+    app = models.ForeignKey(App, verbose_name="Приложение",
+                            on_delete=models.CASCADE, null=True)
 
     def clean(self) -> None:
         if re.search(r"[^A-Za-z]", self.name):
-            raise ValidationError({"name": "Name contains forbidden characters"})
+            raise ValidationError(
+                {"name": "Name contains forbidden characters"})
 
         if self.settings_type == self.INT:
             try:
                 int(self.value)
             except:
-                raise ValidationError({'value': "Can't convert given value into integer"})
+                raise ValidationError(
+                    {'value': "Can't convert given value into integer"})
         elif self.settings_type == self.DOUBLE:
             try:
                 float(self.value)
             except:
-                raise ValidationError({'value': "Can't convert given value into double"})
+                raise ValidationError(
+                    {'value': "Can't convert given value into double"})
 
     class Meta:
         verbose_name = "Настройка"
@@ -104,7 +124,8 @@ class LeadFormData(models.Model):
     name = models.CharField("Название", max_length=255, blank=True)
     email = models.CharField("Почта", max_length=255, blank=True)
     phone = models.CharField("Телефон", max_length=31, blank=True)
-    sum = models.DecimalField("Сумма", max_digits=10, decimal_places=2, default=0.0)
+    sum = models.DecimalField("Сумма", max_digits=10,
+                              decimal_places=2, default=0.0)
 
     class Meta:
         verbose_name = "Данные с лид формы"

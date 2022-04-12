@@ -12,13 +12,21 @@ class FinancailUnitsTypeAdmin(admin.ModelAdmin):
 
 @admin.register(models.FinancialUnit)
 class FinancailUnitsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'fin_type', 'active')
+    list_display = ('id', 'name', 'fin_type', 'active', 'app')
     search_fields = ('name',)
+
 
 @admin.register(models.Settings)
 class SettingsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'value')
+    list_display = ('id', 'name', 'value', 'app')
     search_fields = ('name',)
+
+
+@admin.register(models.App)
+class AppAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+    search_fields = ('name',)
+
 
 @admin.register(models.LeadFormData)
 class LeadFormAdmin(admin.ModelAdmin):
