@@ -38,22 +38,23 @@ class FinancialUnit(models.Model):
     fin_type = models.ForeignKey(
         FinancailUnitsType, verbose_name="Тип", on_delete=models.CASCADE)
     name = models.CharField("Название", max_length=255)
+    description = models.TextField("Описание", default='', blank=True)
 
-    loan_terms = models.TextField("Условия займа")
-    requirements = models.TextField("Требования")
+    loan_terms = models.TextField("Условия займа", default='', blank=True)
+    requirements = models.TextField("Требования", default='', blank=True)
 
     sum = models.CharField("Сумма", max_length=255)
-    term = models.CharField("Срок", max_length=255)
+    term = models.CharField("Срок", max_length=255, blank=True, default='')
     bid = models.CharField("Ставка", max_length=255)
 
     rating = models.FloatField("Рейтинг",
                                validators=[MinValueValidator(0.0), MaxValueValidator(5.0)],)
     active = models.BooleanField("Активно", default=True)
-    link = models.TextField("Ссылка")
+    link = models.TextField("Ссылка", blank=True, default='')
     image = models.ImageField(
         upload_to='uploads/%Y/%m/%d/', blank=True, null=True)
     app = models.ForeignKey(App, verbose_name="Приложение",
-                            on_delete=models.CASCADE, null=True)
+                            on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Финансовая единица"
