@@ -15,7 +15,7 @@ class FinancialUnitSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.FinancialUnit
-        fields = '__all__'
+        exclude = ['app']
 
 
 class SettingsSerializer(serializers.ModelSerializer):
