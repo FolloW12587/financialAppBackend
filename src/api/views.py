@@ -9,13 +9,13 @@ class FinancialUnitsView(ReadOnlyModelViewSet):
     serializer_class = serializers.FinancialUnitSerializer
     permission_classes = [AllowAny, ]
 
-    def get_queryset(self):
-        queryset = self.queryset
-        appId = self.request.query_params.get('appId')
-        if appId is not None:
-            return queryset.filter(app__id=appId)
-        else:
-            return queryset.none()
+    # def get_queryset(self):
+    #     queryset = self.queryset
+    #     appId = self.request.query_params.get('appId')
+    #     if appId is not None:
+    #         return queryset.filter(app__id=appId)
+    #     else:
+    #         return queryset.none()
 
 
 class SettingsView(ReadOnlyModelViewSet):
